@@ -1,0 +1,344 @@
+.SliderAiringAnime {
+  margin: 50px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(237 241 245);
+
+    .slider {
+      width: 60%;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .titles-list {
+        display: flex;
+        column-gap: 20px;
+
+        span {
+          font-weight: bold;
+          font-size: 18px;
+          color: #222;
+          border-left: 2px solid lightgray;
+          cursor: pointer;
+          position: relative;
+          transition: all 1s ease;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+
+          &::after {
+            content: "";
+            position: absolute;
+            height: 4px;
+            width: 0;
+            background-color: #14b8a6;
+            left: 20px;
+            bottom: 0px;
+            transition: width 1s ease;
+          }
+          &:first-child {
+            padding-left: 0;
+            border-left: none;
+            &::after {
+              left: 0;
+            }
+          }
+
+          &.active {
+            color: #14b8a6;
+
+            &:first-child::after {
+              width: calc(100% - 20px);
+            }
+            &:not(:first-child)::after {
+              width: calc(100% - 40px);
+            }
+          }
+        }
+
+        .button {
+          background-color: #14b8a6;
+          padding: 8px 20px;
+          border-radius: 6px;
+          font-weight: bold;
+          margin-left: auto;
+          color: white;
+          width: fit-content;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+
+      .sliderList {
+        height: 470px;
+      }
+    }
+    .list {
+      width: 35%; /*480px*/
+      background-color: #333333;
+      height: 600px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      color: white;
+      border-radius: 6px;
+
+      .title {
+        h4 {
+          color: #14b8a6;
+          position: relative;
+          width: fit-content;
+          &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: #14b8a6;
+            left: 0;
+            bottom: -4px;
+          }
+        }
+      }
+
+      .list-new-airing {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .single-item {
+          width: 100%;
+          display: flex;
+          column-gap: 20px;
+          padding: 15px 0;
+          &:not(:last-child) {
+            border-bottom: 1px solid rgb(172, 169, 169);
+          }
+
+          img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+          }
+          .details {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            width: 100%;
+
+            .name {
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              color: #14b8a6;
+            }
+          }
+        }
+      }
+
+      a {
+        margin: 0 auto;
+      }
+      .button {
+        background-color: #14b8a6;
+        color: white;
+        font-family: "Concert One", sans-serif;
+        font-weight: bold;
+        width: fit-content;
+        padding: 8px 25px;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          column-gap: 10px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .SliderAiringAnime {
+    .container {
+      flex-direction: column;
+      justify-content: flex-start;
+      row-gap: 50px;
+
+      .slider {
+        width: 100%;
+      }
+      .list {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          column-gap: 10px;
+          span {
+            font-size: 16px;
+            padding: 0 15x;
+
+            &::after {
+              left: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          column-gap: 10px;
+          span {
+            font-size: 14px;
+            padding: 0 15x;
+
+            &::after {
+              left: 15px;
+            }
+          }
+        }
+      }
+      .list {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          column-gap: 0px;
+          span {
+            font-size: 14px;
+            padding: 0 10px;
+
+            &::after {
+              left: 15px;
+            }
+          }
+
+          .button {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          span {
+            font-size: 11px;
+            padding: 0 8px;
+
+            &::after {
+              left: 10px;
+              bottom: -2px;
+            }
+          }
+          .button {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .mySwiper.solo {
+        .swiper-pagination-bullets {
+          bottom: var(--swiper-pagination-bottom, 10px);
+        }
+      }
+      .list {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          justify-content: center;
+          flex-wrap: wrap;
+          row-gap: 10px;
+          margin-bottom: 15px;
+
+          .button {
+            font-size: 10px;
+            margin: auto;
+          }
+        }
+      }
+      .mySwiper.solo {
+        .swiper-pagination-bullets {
+          bottom: var(--swiper-pagination-bottom, 8px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .SliderAiringAnime {
+    .container {
+      .slider {
+        .titles-list {
+          flex-wrap: wrap;
+          row-gap: 10px;
+          margin-bottom: 15px;
+          span {
+            font-size: 11px;
+            padding: 0 8px;
+
+            &::after {
+              left: 10px;
+            }
+          }
+          .button {
+            font-size: 10px;
+            margin: auto;
+          }
+        }
+      }
+      .list {
+        height: 660px;
+      }
+    }
+  }
+}

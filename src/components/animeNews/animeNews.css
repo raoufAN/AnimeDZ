@@ -1,0 +1,99 @@
+.anime-news {
+  margin: 50px 0;
+  background-color: rgb(237 241 245);
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 50px;
+      font-family: "Bebas Neue";
+      margin-bottom: 20px;
+    }
+
+    .boxes {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+
+      .box {
+        background-color: #333;
+        padding: 20px;
+        color: white;
+        border-radius: 6px;
+        height: 240px;
+        display: flex;
+        column-gap: 20px;
+        position: relative;
+
+        img {
+          width: 200px;
+          height: 200px;
+          border-radius: 6px;
+        }
+        .right-box {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          h5 {
+            color: #14b8a6;
+          }
+          p {
+            font-size: 13px;
+          }
+          h6 {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .anime-news {
+    .container {
+      .boxes {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+        .box {
+          flex-direction: column;
+          height: 450px;
+          align-items: center;
+          row-gap: 10px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .anime-news {
+    .container {
+      h1 {
+        font-size: 35px;
+      }
+      .boxes {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+        .box {
+          flex-direction: column;
+          height: 480px;
+          align-items: center;
+          row-gap: 10px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

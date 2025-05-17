@@ -1,0 +1,299 @@
+.anime-details {
+  background-color: rgb(237 241 245);
+  width: 100%;
+  height: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(237 241 245);
+
+    h1 {
+      font-family: "Bebas Neue", sans-serif;
+      padding: 50px;
+      text-align: center;
+      font-size: 50px;
+      background: linear-gradient(90deg, #000000, #230e80, #0055ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        transform: skew(-3deg);
+      }
+    }
+
+    .box-details {
+      width: 80%;
+      background-color: #333333;
+      padding: 30px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+
+      .top-details {
+        width: 100%;
+        column-gap: 30px;
+        display: flex;
+
+        img {
+          border-radius: 6px;
+        }
+        .box-details-right {
+          display: flex;
+          column-gap: 30px;
+          width: 100%;
+          color: white;
+
+          .left,
+          .right {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .info-item {
+              display: flex;
+              align-items: center;
+              padding: 20px;
+              column-gap: 10px;
+
+              span {
+                font-weight: bold;
+              }
+              p {
+                font-size: 14px;
+                color: lightgray;
+              }
+              i {
+                color: gold;
+              }
+            }
+          }
+        }
+      }
+      .desc {
+        width: 100%;
+        color: white;
+      }
+    }
+
+    h3 {
+      font-family: "Bebas Neue", sans-serif;
+      padding: 50px;
+      text-align: center;
+      font-size: 50px;
+      background: linear-gradient(90deg, #000000, #230e80, #0055ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        transform: skew(-3deg);
+      }
+    }
+
+    .trailer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      iframe {
+        outline: none;
+        border: 5px solid #e5e7eb;
+        padding: 1.5rem;
+        border-radius: 10px;
+        background-color: black;
+      }
+    }
+
+    .box-characters {
+      width: 100%;
+      background-color: #333333;
+      padding: 20px;
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      gap: 15px;
+
+      .character {
+        position: relative;
+        border: 3px solid #14b8a6;
+
+        img {
+          width: 100%;
+        }
+        .character-details {
+          width: 100%;
+          padding: 15px;
+          background-color: #00000096;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+
+          a {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          span {
+            width: 100%;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .anime-details {
+    .container {
+      .box-details {
+        .top-details {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 20px;
+          img {
+            width: 320px;
+          }
+        }
+      }
+      .box-characters {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .anime-details {
+    .container {
+      .box-details {
+        width: 90%;
+        .top-details {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 20px;
+          img {
+            width: 320px;
+          }
+
+          .box-details-right {
+            column-gap: 0px;
+
+            .left,
+            .right {
+              width: fit-content;
+              .info-item {
+                column-gap: 3;
+                span {
+                  font-size: 14px;
+                }
+                p {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+        .desc {
+          font-size: 14px;
+        }
+      }
+      .box-characters {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        .character {
+          .character-details {
+            padding: 5px;
+
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .anime-details {
+    .container {
+      .trailer-container {
+        width: 100%;
+        iframe {
+          width: 100%;
+        }
+      }
+      .box-characters {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        .character {
+          .character-details {
+            padding: 5px;
+
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 730px) {
+  .anime-details {
+    .container {
+      .box-details {
+        padding: 15px;
+        width: 100%;
+        .top-details {
+          .box-details-right {
+            .left,
+            .right {
+              .info-item {
+                span {
+                  font-size: 14px;
+                }
+                p {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .anime-details {
+    .container {
+      .box-details {
+        .top-details {
+          .box-details-right {
+            flex-direction: column;
+            .left,
+            .right {
+              .info-item {
+                span {
+                  font-size: 14px;
+                }
+                p {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
