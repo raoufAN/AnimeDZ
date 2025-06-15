@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -7,8 +6,10 @@ import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper/modules";
 import "./slider.css";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../context/useGlobalContext";
 
 const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
+  const { handleFavorite, heart } = useGlobalContext();
   return (
     <Swiper
       slidesPerView={numberOfSlides}
@@ -27,6 +28,8 @@ const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
         .map((item, index) => (
           <SwiperSlide key={index}>
             <div className="image-wrapper">
+              <div className="overlay-image"></div>
+
               <img src={item.images.jpg.image_url} alt={item?.title} loading="lazy" />
             </div>
             <div className="bottom-wrapper">
@@ -35,21 +38,34 @@ const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
                   return genre.name + " ";
                 })}
               </div>
-              <Link to={`/${type}/${item.mal_id}`} target="_blank">
+              <Link to={`${type}/${item.mal_id}`} target="_blank">
                 <h4 className="title" alt={item.title_english}>
                   {item.title_english ? item.title_english : item.title}
                 </h4>
               </Link>
-
-              <div className="score">
-                {item.score !== null ? (
-                  <>
-                    {item.score}
-                    <i className="fa-solid fa-star"></i>
-                  </>
-                ) : (
-                  item?.aired?.string?.split("t")[0]
-                )}
+              <div className="score-heart">
+                <div className="score">
+                  {item.score !== null ? (
+                    <>
+                      {item.score}
+                      <i className="fa-solid fa-star"></i>
+                    </>
+                  ) : (
+                    item?.aired?.string?.split("t")[0]
+                  )}
+                </div>
+                <i
+                  key={heart}
+                  className={`fa-solid fa-heart heart ${
+                    heart.length > 0 ? (heart.some((el) => el.id === item.mal_id) ? "red" : "") : ""
+                  }`}
+                  onClick={() => {
+                    handleFavorite(
+                      item.mal_id,
+                      type,
+                      item.title_english ? item.title_english : item.titl
+                    );
+                  }}></i>
               </div>
             </div>
           </SwiperSlide>
@@ -59,3 +75,16 @@ const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
 };
 
 export default Slider;
+
+/*
+<div className="score">
+                {item.score !== null ? (
+                  <>
+                    {item.score}
+                    <i className="fa-solid fa-star"></i>
+                  </>
+                ) : (
+                  item?.aired?.string?.split("t")[0]
+                )}
+              </div>
+*/

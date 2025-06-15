@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./sliderHero.css";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const ItemInSlider = ({ data }) => {
               </a>
             </span>
             <span className="see-details">
-              <Link to={`/anime/${data.id}`} target="_blank">
+              <Link to={`anime/${data.id}`} target="_blank">
                 See More Details
               </Link>
             </span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./characters.css";
 import { Link, useParams } from "react-router-dom";
 
@@ -41,7 +41,7 @@ const Characters = () => {
           {characterPicture.map((el, index) => {
             return (
               <div className="picture" key={index} onClick={() => setIndexPic(index)}>
-                <img src={el?.jpg.image_url} alt={name} />
+                <img src={el?.jpg.image_url} alt={name} loading="lazy" />
               </div>
             );
           })}

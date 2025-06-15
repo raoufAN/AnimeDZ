@@ -1,13 +1,15 @@
 .footer {
-  background-image: url("../../assets/footer.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 300px;
+  height: 190px;
   position: relative;
   .container {
+    background: transparent;
+    height: 100%;
     padding: 20px;
     position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .top {
       display: flex;
@@ -24,7 +26,7 @@
         color: white;
         align-items: center;
 
-        span {
+        a {
           padding: 20px;
           width: fit-content;
           cursor: pointer;
@@ -51,7 +53,7 @@
           font-weight: bold;
         }
 
-        .bodrer {
+        .border {
           border-left: 2px solid lightgray;
           border-right: 2px solid lightgray;
         }
@@ -65,5 +67,49 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    .container {
+      .top {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    .container {
+      .top {
+        flex-direction: column;
+
+        .logo {
+          font-size: 30px;
+        }
+        .links {
+          a {
+            font-size: 14px;
+            padding: 10px;
+          }
+        }
+      }
+
+      .bottom {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .footer {
+    .container {
+      .bottom {
+        font-size: 10px;
+      }
+    }
   }
 }

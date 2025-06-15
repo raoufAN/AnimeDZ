@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./airingSection.css";
-import useGlobalContext from "../../context/useGlobalContext";
+import { useGlobalContext } from "../../context/useGlobalContext";
 import SingleSlider from "./SingleSlider";
 import { Link } from "react-router-dom";
 
@@ -64,7 +64,7 @@ const AiringSection = () => {
               );
             })}
             <Link className="button" to={`home/${whichSeason}/${whichYear}`} target="_blank">
-              Show More
+              View All
             </Link>
           </div>
           <div className="sliderList">
@@ -78,8 +78,8 @@ const AiringSection = () => {
           <div className="list-new-airing">
             <SingleItemList />
           </div>
-          <Link to={`/home/recentEpisodes`} target="_blank">
-            <span className="button">Show More</span>
+          <Link to={`recentEp`} target="_blank">
+            <span className="button"> View All</span>
           </Link>
         </div>
       </div>

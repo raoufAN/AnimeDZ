@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import useGlobalContext from "../../context/useGlobalContext";
+import { useEffect, useState } from "react";
+import { useGlobalContext } from "../../context/useGlobalContext";
 import Slider from "../slider/Slider";
 
 const SingleSlider = ({ whichSeason }) => {

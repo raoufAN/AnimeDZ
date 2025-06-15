@@ -1,0 +1,127 @@
+.genres {
+  margin: 50px 0;
+  background-color: rgb(237 241 245);
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 50px;
+      font-family: "Bebas Neue";
+      margin-bottom: 20px;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 20px;
+      background-color: #333;
+
+      .genre {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          border-color: #14b8a6;
+          border-width: 3px;
+          transform: translateY(-4px);
+
+          p {
+            color: #14b8a6;
+          }
+
+          span {
+            color: #14b8a6;
+            border-top: 3px solid #14b8a6;
+          }
+        }
+
+        p {
+          font-size: 16px;
+          font-weight: 900;
+          color: #374151;
+          word-break: break-word;
+          padding-bottom: 15px;
+          color: white;
+        }
+
+        span {
+          padding-top: 15px;
+          border-top: 1px solid #e5e7eb;
+          display: block;
+          font-size: 20px;
+          font-weight: bold;
+          color: white;
+        }
+      }
+    }
+
+    .button {
+      background-color: #14b8a6;
+      color: white;
+      font-family: "Concert One", sans-serif;
+      font-weight: bold;
+      width: fit-content;
+      height: fit-content;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 25px;
+      cursor: pointer;
+      margin: 20px auto;
+      &:hover {
+        background-color: #008575;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .genres {
+    .container {
+      h1 {
+        font-size: 35px;
+      }
+
+      .wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+        .genre {
+          p {
+            font-size: 14px;
+          }
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .genres {
+    .container {
+      h1 {
+        font-size: 30px;
+      }
+
+      .wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+        .genre {
+          p {
+            font-size: 14px;
+          }
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

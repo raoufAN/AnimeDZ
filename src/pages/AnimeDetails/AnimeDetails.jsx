@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./animeDetails.css";
 import { Link, useParams } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 const AnimeDetails = () => {
   const { type, id } = useParams();
+  console.log(type, id);
 
   const [fullAnime, setFullAnime] = useState([]);
   const [fullcharacters, setFullCharacters] = useState([]);
@@ -30,6 +32,8 @@ const AnimeDetails = () => {
         return;
       }
       const data = await response.json();
+      console.log(data);
+
       setFullCharacters(data.data);
     } catch (error) {
       console.error("Error fetching Data", error);
@@ -69,10 +73,7 @@ const AnimeDetails = () => {
     if (type === "anime") {
       getFullAnime(id);
       getCharcters(id);
-      console.log(type);
     } else {
-      console.log(type);
-
       getFullManga(id);
       getFullMangaCharacter(id);
     }
@@ -154,7 +155,7 @@ const AnimeDetails = () => {
               <strong>description :</strong> {fullAnime.synopsis}
             </div>
           </div>
-          <h3>Trailer</h3>
+          <h3>{fullAnime?.trailer?.embed_url ? "Trailer" : ""} </h3>
           <div className="trailer-container">
             {fullAnime?.trailer?.embed_url && (
               <iframe
@@ -163,8 +164,7 @@ const AnimeDetails = () => {
                 width="800"
                 height={"450"}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                sandbox></iframe>
+                allowFullScreen></iframe>
             )}
           </div>
           <h3>All Characters</h3>
@@ -274,13 +274,13 @@ const AnimeDetails = () => {
             </div>
           </div>
 
-          <h3>All Characters</h3>
+          <h3>Recommandation</h3>
           <div className="box-characters">
             {fullcharacters.map((el, index) => (
               <div className="character" key={index}>
                 <img src={el.entry.images.jpg.image_url} alt={el.entry.title} loading="lazy" />
                 <div className="character-details">
-                  <Link to={`/manga/${el.entry.mal_id}`} target="_blank">
+                  <Link to={`manga/${el.entry.mal_id}`} target="_blank">
                     <span>
                       <strong>name : </strong>
                       {el.entry.title}

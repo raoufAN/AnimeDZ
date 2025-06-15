@@ -1,4 +1,3 @@
-import React from "react";
 import "./homePage.css";
 
 import Header from "../../components/header/Header";
@@ -8,6 +7,7 @@ import TopAnime from "../../components/topAnime/TopAnime";
 import TopManga from "../../components/topManga/TopManga";
 import AnimeNews from "../../components/animeNews/AnimeNews";
 import Footer from "../../components/footer/Footer";
+import Genres from "../../components/Genres/Genres";
 
 const HomePage = () => {
   return (
@@ -17,6 +17,9 @@ const HomePage = () => {
       <AiringSection />
       <TopAnime />
       <TopManga />
+      <Genres />
+      <AnimeNews />
+      <Footer />
     </div>
   );
 };

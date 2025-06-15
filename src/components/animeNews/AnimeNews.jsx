@@ -1,6 +1,5 @@
-import React from "react";
 import "./animeNews.css";
-import useGlobalContext from "../../context/useGlobalContext";
+import { useGlobalContext } from "../../context/useGlobalContext";
 
 const AnimeNews = () => {
   const { AnimeNews } = useGlobalContext();

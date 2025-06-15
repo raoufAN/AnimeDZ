@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./TopManga.css";
-import useGlobalContext from "../../context/useGlobalContext";
+import { useGlobalContext } from "../../context/useGlobalContext";
 import Slider from "../slider/Slider";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const TopManga = () => {
         <div className="wrapper-title-button">
           <h1>Top Manga</h1>
           <Link className="button" to={`home/TopManga/${year}`} target="_blank">
-            Show More
+            View All
           </Link>
         </div>
         <Slider animeArray={TopManga} numberOfSlides={numberOfItems} type={"manga"} />

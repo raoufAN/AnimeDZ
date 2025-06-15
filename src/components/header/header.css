@@ -65,6 +65,9 @@
           }
           a {
             color: black;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .single-result {
             width: 100%;
@@ -93,10 +96,13 @@
           }
         }
       }
-
-      .favorite {
-        color: white;
-        font-size: 30px;
+      .favorirte-wrapper {
+        position: relative;
+        .favorite {
+          color: white;
+          font-size: 30px;
+          cursor: pointer;
+        }
       }
     }
   }

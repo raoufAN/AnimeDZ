@@ -1,23 +1,23 @@
 import aotFull from "../assets/aotFull.avif";
-import aotPoster from "../assets/aotposter.jpg";
+import aotPoster from "../assets/aotposter.webp";
 
-import cidFull from "../assets/cidFull.jpg";
-import cidPoster from "../assets/cidPoster.jpg";
+import cidFull from "../assets/cidFull.webp";
+import cidPoster from "../assets/cidPoster.webp";
 
-import dbsFull from "../assets/dgbFull.jpg";
-import dbsPoster from "../assets/dgbposter.jpg";
+import dbsFull from "../assets/dgbFull.webp";
+import dbsPoster from "../assets/dgbposter.webp";
 
-import opFull from "../assets/opFull.png";
-import opPoster from "../assets/opposter.jpg";
+import opFull from "../assets/opFull.webp";
+import opPoster from "../assets/opposter.webp";
 
-import narutoPoster from "../assets/narutoposter.jpg";
+import narutoPoster from "../assets/narutoposter.webp";
 import narutoFull from "../assets/narutofull.avif";
 
-import bleachPoster from "../assets/bleachposter.jpg";
-import bleachFull from "../assets/bleachFull.jpg";
+import bleachPoster from "../assets/bleachposter.webp";
+import bleachFull from "../assets/bleachFull.webp";
 
-import hanterPoster from "../assets/hanterposter.jpg";
-import hanterFull from "../assets/hanterFull.jpg";
+import hanterPoster from "../assets/hanterposter.webp";
+import hanterFull from "../assets/hanterFull.webp";
 
 const myDataSilder = [
   {

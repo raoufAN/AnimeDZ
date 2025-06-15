@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react";
-import GlobalContext from "./GlobalContext";
+import { useCallback, useEffect, useReducer, useState } from "react";
+import { GlobalContext } from "./GlobalContext";
 import { useMemo } from "react";
 
 const baseUrl = "https://api.jikan.moe/v4";
@@ -16,7 +16,7 @@ const reducer = (state, action) => {
         loading: false,
       };
     case "RecentsEpisodes":
-      return { ...state, RecentEpisodes: action.payload, loading: false };
+      return { ...state, RecentEpisodes: action.payload, Pages: action.page, loading: false };
     case "AiringSeason":
       return {
         ...state,
@@ -38,8 +38,18 @@ const reducer = (state, action) => {
         Pages: action.payload.page,
         loading: false,
       };
+
+    case "AnimeGenres":
+      return {
+        ...state,
+        AnimeGenres: action.payload.data,
+        GenresPages: action.payload.page,
+        loading: false,
+      };
     case "AnimeNews":
       return { ...state, AnimeNews: action.payload, loading: false };
+    case "Genres":
+      return { ...state, Genres: action.payload, loading: false };
     case "Search":
       return { ...state, searchList: action.payload, loading: false };
     default:
@@ -57,6 +67,9 @@ const initialState = {
   TopManga: [],
   AnimeNews: [],
   searchList: [],
+  Genres: [],
+  AnimeGenres: [],
+  GenresPages: null,
   loading: false,
 };
 
@@ -64,6 +77,12 @@ const Global = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const [recentArray, setRecentArray] = useState([]);
+  const [recentPages, setRecentPages] = useState([]);
+  const [heart, setHeart] = useState(() => {
+    const stored = window.localStorage.getItem("favorite");
+    return stored ? JSON.parse(stored) : [];
+  });
+
   const [WindowSeize, setWindowSeize] = useState(window.innerWidth);
 
   const getRecentsEpisodes = useCallback(async (id, name, image) => {
@@ -74,6 +93,7 @@ const Global = ({ children }) => {
         return;
       }
       const data = await response.json();
+
       setRecentArray((prev) => {
         return [...prev, { image, name, data: data.data }];
       });
@@ -85,6 +105,9 @@ const Global = ({ children }) => {
   const Airing = useCallback(
     async (page) => {
       dispatch({ type: "Loading" });
+      if (page !== 1) {
+        setRecentArray([]);
+      }
 
       try {
         const response = await fetch(`${baseUrl}/seasons/now?page=${page}`);
@@ -93,7 +116,7 @@ const Global = ({ children }) => {
           return;
         }
         const data = await response.json();
-
+        setRecentPages(data.pagination.last_visible_page);
         dispatch({
           type: "AiringNow",
           payload: {
@@ -139,7 +162,7 @@ const Global = ({ children }) => {
     }
   }, []);
 
-  const getTopAnime = async (page) => {
+  const getTopAnime = useCallback(async (page) => {
     try {
       const response = await fetch(`${baseUrl}/top/anime?page=${page}`);
       if (!response.ok) {
@@ -158,9 +181,9 @@ const Global = ({ children }) => {
     } catch (error) {
       console.error("Error fetching Data", error);
     }
-  };
+  }, []);
 
-  const getTopManga = async (page) => {
+  const getTopManga = useCallback(async (page) => {
     try {
       const response = await fetch(`${baseUrl}/top/manga?page=${page}`);
       if (!response.ok) {
@@ -179,7 +202,7 @@ const Global = ({ children }) => {
     } catch (error) {
       console.error("Error fetching Data : ", error);
     }
-  };
+  }, []);
 
   const getAnimeNews = async () => {
     try {
@@ -212,6 +235,54 @@ const Global = ({ children }) => {
     }
   }, []);
 
+  const getAnimeGenres = async (genre, page) => {
+    try {
+      let response = await fetch(`${baseUrl}/anime?genres=${genre}&page=${page}`);
+      if (!response.ok) {
+        console.error("request faild with : ", response.status);
+      }
+      let data = await response.json();
+      dispatch({
+        type: "AnimeGenres",
+        payload: {
+          data: data.data,
+          page: data.pagination.last_visible_page,
+        },
+      });
+    } catch (error) {
+      console.error("Errore fetching data :", error);
+    }
+  };
+  const handleFavorite = (fav, whichtype, animeName) => {
+    setHeart((prev) => {
+      const exists = prev.some((el) => el.id === fav);
+
+      if (exists) {
+        let favArray = prev.filter((el) => !(el.type === whichtype && el.id === fav));
+        window.localStorage.setItem("favorite", JSON.stringify(favArray));
+        return favArray;
+      } else {
+        let favArray = [...prev, { id: fav, type: whichtype, name: animeName }];
+        window.localStorage.setItem("favorite", JSON.stringify(favArray));
+        return favArray;
+      }
+    });
+  };
+
+  const GetGenres = useCallback(async () => {
+    try {
+      const response = await fetch("https://api.jikan.moe/v4/genres/anime");
+      if (!response.ok) {
+        console.error("Request Failed With status :", response.status);
+      }
+      const data = await response.json();
+
+      dispatch({ type: "Genres", payload: data.data });
+    } catch (error) {
+      console.error("Error Fetching Data : ", error);
+    }
+  }, []);
+
   useEffect(() => {
     dispatch({
       type: "RecentsEpisodes",
@@ -220,16 +291,20 @@ const Global = ({ children }) => {
         // self is all the aray t like Item
         return index === self.findIndex((t) => t.name === item.name);
       }),
+      page: recentPages,
     });
-  }, [recentArray]);
+  }, [recentArray, recentPages]);
+
+  const loadInitialData = useCallback(async () => {
+    await Promise.allSettled([Airing(1), getTopAnime(1)]);
+    getTopManga(1);
+    GetGenres();
+    getAnimeNews(); // delayed
+  }, [Airing, getTopAnime, getTopManga, GetGenres]);
 
   useEffect(() => {
-    Airing(1);
-    getTopAnime(1);
-    getTopManga(1);
-    getAnimeNews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    loadInitialData();
+  }, [loadInitialData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -251,8 +326,11 @@ const Global = ({ children }) => {
       Airing,
       getTopAnime,
       getTopManga,
+      getAnimeGenres,
+      handleFavorite,
+      heart,
     }),
-    [state, getAiringSeason, WindowSeize, searchAnime, Airing]
+    [state, getAiringSeason, WindowSeize, searchAnime, Airing, heart, getTopAnime, getTopManga]
   );
 
   return <GlobalContext.Provider value={contextValue}>{children}</GlobalContext.Provider>;

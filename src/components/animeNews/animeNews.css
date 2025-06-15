@@ -53,6 +53,16 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .anime-news {
+    .container {
+      h1 {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 650px) {
   .anime-news {
     .container {
@@ -78,7 +88,7 @@
   .anime-news {
     .container {
       h1 {
-        font-size: 35px;
+        font-size: 30px;
       }
       .boxes {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

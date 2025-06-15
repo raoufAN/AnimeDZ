@@ -1,0 +1,119 @@
+.favorites {
+  position: absolute;
+  width: 450px;
+  background-color: white;
+  max-height: 250px;
+  bottom: -262px;
+  right: 0;
+  z-index: 33;
+  border-radius: 6px;
+  border-top-right-radius: 0;
+
+  .single-fav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 50px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #444;
+    }
+
+    .name-type {
+      width: 90%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 15px;
+
+      &:hover {
+        background-color: lightgray;
+        font-weight: bold;
+      }
+      .fav-name {
+        height: 100%;
+        padding: 10px 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .fav-type {
+        height: 100%;
+        padding: 10px 20px;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          width: 100%;
+          font-weight: bold;
+        }
+
+        &.anime {
+          p {
+            color: #14b8a6;
+          }
+        }
+
+        &.manga {
+          p {
+            color: rgb(74, 74, 250);
+          }
+        }
+      }
+    }
+
+    .delte {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 10%;
+      cursor: pointer;
+    }
+  }
+
+  &.empty {
+    height: 50px;
+    overflow-y: auto;
+    bottom: -62px;
+
+    .empty-fav {
+      width: 100%;
+      height: 100%;
+      padding: 10px 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .favorites {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .favorites {
+    width: 340px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .favorites {
+    width: 300px;
+  }
+}
