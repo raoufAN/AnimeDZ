@@ -11,7 +11,7 @@ import ExploreGenres from "./pages/ExploreAnimes/ExploreGenres";
 function App() {
   return (
     <div className="app">
-      <Router>
+      <Router basename="/animeDZ">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home/:explore/:year" element={<ExplorePage />} />
