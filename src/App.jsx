@@ -11,7 +11,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="app">
-      <Router basename="/animeDZ">
+      <Router >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home/:explore/:year" element={<ExplorePage />} />
