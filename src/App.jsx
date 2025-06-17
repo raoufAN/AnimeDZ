@@ -1,12 +1,12 @@
 import "./App.css";
 import HomePage from "./pages/homePage/HomePage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ExplorePage from "./pages/ExploreAnimes/ExplorePage";
 import AnimeDetails from "./pages/AnimeDetails/AnimeDetails";
 import Characters from "./pages/character/Characters";
 import Recent from "./pages/recentEpisodes/Recent";
 import ExploreGenres from "./pages/ExploreAnimes/ExploreGenres";
-//import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
