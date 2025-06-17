@@ -6,6 +6,7 @@ import AnimeDetails from "./pages/AnimeDetails/AnimeDetails";
 import Characters from "./pages/character/Characters";
 import Recent from "./pages/recentEpisodes/Recent";
 import ExploreGenres from "./pages/ExploreAnimes/ExploreGenres";
+//import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
