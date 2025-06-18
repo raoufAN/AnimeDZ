@@ -229,3 +229,25 @@
     }
   }
 }
+
+
+@media screen and (max-width: 380px) {
+  .explore-anime {
+    .container {
+      .pagination-box {
+        .MuiStack-root {
+          .MuiPagination-root {
+            .MuiPagination-ul {
+              li {
+                .MuiButtonBase-root {
+                  min-width: 20px;
+                  height: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
