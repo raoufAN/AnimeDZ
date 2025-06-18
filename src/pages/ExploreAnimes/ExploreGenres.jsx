@@ -71,7 +71,7 @@ const ExploreGenres = () => {
               </div>
             ))
           ) : (
-            <p>Loading...</p>
+            <p className="loading">Loading... 👯‍♂️ </p>
           )}
         </div>
         <div className="pagination-box">

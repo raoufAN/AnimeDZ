@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
+import "swiper/css/scrollbar"; // ✅ Required for scrollbar drag to appear
+
+import { FreeMode, Scrollbar } from "swiper/modules";
 import "./slider.css";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context/useGlobalContext";
@@ -16,10 +18,10 @@ const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
       key={keyElement ?? ""}
       spaceBetween={15}
       freeMode={true}
-      pagination={{
-        clickable: true,
+      scrollbar={{
+        draggable: true,
       }}
-      modules={[FreeMode, Pagination]}
+      modules={[FreeMode, Scrollbar]}
       className="mySwiper solo">
       {animeArray
         .filter((el, index, self) => {
@@ -75,16 +77,3 @@ const Slider = ({ animeArray, numberOfSlides, keyElement, type }) => {
 };
 
 export default Slider;
-
-/*
-<div className="score">
-                {item.score !== null ? (
-                  <>
-                    {item.score}
-                    <i className="fa-solid fa-star"></i>
-                  </>
-                ) : (
-                  item?.aired?.string?.split("t")[0]
-                )}
-              </div>
-*/

@@ -33,12 +33,24 @@
           font-size: 16px;
         }
 
-        i {
+        .type {
           position: absolute;
-          right: 10px;
+          right: 0px;
           top: 50%;
           transform: translateY(-50%);
-          font-size: 20px;
+          font-size: 16px;
+          padding: 7px 10px;
+          color: white;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+          cursor: pointer;
+          font-weight: bold;
+          &.anime {
+            background-color: #14b8a6;
+          }
+          &.manga {
+            background-color: rgb(74, 74, 250);
+          }
         }
 
         .search-results {
@@ -121,6 +133,10 @@
             width: 280px;
             padding: 8px 15px;
           }
+          .type {
+            right: 0;
+            padding: 5px 10px;
+          }
           .search-results {
             width: 280px;
           }
@@ -134,7 +150,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 460px) {
   .header {
     height: 120px;
     .header-container {

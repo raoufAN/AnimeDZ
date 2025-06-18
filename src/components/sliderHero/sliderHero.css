@@ -189,6 +189,9 @@
         .container {
           .left-page {
             width: 90%;
+            padding-left: 10px;
+            padding-right: 10px;
+
             .desc {
               font-size: 14px;
             }

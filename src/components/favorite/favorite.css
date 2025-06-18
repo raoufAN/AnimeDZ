@@ -102,18 +102,18 @@
 
 @media screen and (max-width: 620px) {
   .favorites {
-    width: 300px;
+    width: 350px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .favorites {
-    width: 340px;
+    width: 350px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .favorites {
-    width: 300px;
+    width: 335px;
   }
 }

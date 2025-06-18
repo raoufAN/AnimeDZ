@@ -117,6 +117,13 @@
           }
         }
       }
+
+      .loading {
+        width: 100%;
+        color: white;
+        text-align: center;
+        font-size: 25px;
+      }
     }
 
     .pagination-box {
@@ -230,7 +237,6 @@
   }
 }
 
-
 @media screen and (max-width: 380px) {
   .explore-anime {
     .container {
@@ -242,6 +248,7 @@
                 .MuiButtonBase-root {
                   min-width: 20px;
                   height: 20px;
+                  font-size: 12px;
                 }
               }
             }

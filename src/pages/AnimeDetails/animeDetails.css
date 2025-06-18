@@ -2,11 +2,12 @@
   background-color: rgb(237 241 245);
   width: 100%;
   height: 100%;
-  .container {
+
+  .continer-anime-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(237 241 245);
+    background-color: transparent;
     padding-bottom: 30px;
     h1 {
       font-family: "Bebas Neue", sans-serif;
@@ -147,6 +148,12 @@
           }
         }
       }
+    }
+  }
+
+  .footer {
+    .container {
+      background-color: transparent;
     }
   }
 }

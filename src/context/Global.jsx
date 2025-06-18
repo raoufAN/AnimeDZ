@@ -221,17 +221,31 @@ const Global = ({ children }) => {
     }
   };
 
-  const searchAnime = useCallback(async (name) => {
-    try {
-      const response = await fetch(`${baseUrl}/anime?q=${name}&sfw`);
-      if (!response.ok) {
-        console.error("Request failed with status:", response.status);
-        return;
+  const searchAnime = useCallback(async (type, name) => {
+    if (type === "anime") {
+      try {
+        const response = await fetch(`${baseUrl}/anime?q=${name}&sfw`);
+        if (!response.ok) {
+          console.error("Request failed with status:", response.status);
+          return;
+        }
+        const data = await response.json();
+        dispatch({ type: "Search", payload: data.data });
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-      const data = await response.json();
-      dispatch({ type: "Search", payload: data.data });
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    } else {
+      try {
+        const response = await fetch(`${baseUrl}/manga?q=${name}&sfw`);
+        if (!response.ok) {
+          console.error("Request failed with status:", response.status);
+          return;
+        }
+        const data = await response.json();
+        dispatch({ type: "Search", payload: data.data });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     }
   }, []);
 

@@ -5,14 +5,25 @@ import { Link } from "react-router-dom";
 
 const Search = ({ isSearching, setIsSearching, setShowFav }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [whichType, setWhichType] = useState("anime");
+  const [chooseType, setChooseType] = useState(false);
+
   const debouncedQuery = Debounce(searchValue, 1000);
   const { searchAnime, searchList } = useGlobalContext();
 
   useEffect(() => {
     if (debouncedQuery) {
-      searchAnime(debouncedQuery);
+      searchAnime(whichType, debouncedQuery);
     }
-  }, [debouncedQuery, searchAnime]);
+  }, [debouncedQuery, searchAnime, whichType]);
+
+  const getchooseType = () => {
+    if (chooseType === true) {
+      setWhichType("manga");
+    } else {
+      setWhichType("anime");
+    }
+  };
 
   return (
     <div className="search">
@@ -25,17 +36,24 @@ const Search = ({ isSearching, setIsSearching, setShowFav }) => {
           setIsSearching(true);
         }}
       />
-      <i
-        className="fa-sharp fa-solid fa-magnifying-glass"
-        onClick={() => searchAnime(debouncedQuery)}></i>
+      <span
+        className={`type ${whichType}`}
+        onClick={() => {
+          setChooseType(!chooseType);
+          getchooseType();
+        }}>
+        {whichType}
+      </span>
       {debouncedQuery.length > 3 && isSearching === true ? (
         <div className="search-results" key={searchList}>
-          {searchList.slice(0, 20).map((item) => (
-            <div className="single-result" key={item.mal_id}>
-              <Link to={`anime/${item.mal_id}`} target="_blank">
-                <span>{item.title}</span>
-              </Link>
-            </div>
+          {searchList.slice(0, 20).map((item, index) => (
+            <Link
+              className="single-result"
+              key={index}
+              to={`/${whichType}/${item.mal_id}`}
+              target="_blank">
+              <span>{item.title}</span>
+            </Link>
           ))}
         </div>
       ) : (

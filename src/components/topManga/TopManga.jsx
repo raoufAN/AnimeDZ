@@ -9,7 +9,6 @@ const year = new Date().getFullYear();
 const TopManga = () => {
   const { TopManga, WindowSeize } = useGlobalContext();
   const [numberOfItems, setNumberOfItems] = useState(5);
-
   useEffect(() => {
     if (WindowSeize > 1100) {
       setNumberOfItems(5);
@@ -17,7 +16,7 @@ const TopManga = () => {
       setNumberOfItems(4);
     } else if (WindowSeize > 650) {
       setNumberOfItems(3);
-    } else if (WindowSeize > 460) {
+    } else if (WindowSeize > 400) {
       setNumberOfItems(2);
     } else {
       setNumberOfItems(1);

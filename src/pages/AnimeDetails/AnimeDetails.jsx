@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./animeDetails.css";
 import { Link, useParams } from "react-router-dom";
+import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 
 const AnimeDetails = () => {
@@ -81,8 +82,9 @@ const AnimeDetails = () => {
 
   return (
     <div className="anime-details">
+      <Header />
       {type === "anime" ? (
-        <div className="container">
+        <div className="container continer-anime-details">
           <h1>{fullAnime?.title_english || fullAnime?.title || "Untitled"}</h1>
           <div className="box-details">
             <div className="top-details">
@@ -194,7 +196,7 @@ const AnimeDetails = () => {
           </div>
         </div>
       ) : (
-        <div className="container">
+        <div className="container  continer-anime-details">
           <h1>{fullAnime?.title_english || fullAnime?.title || "Untitled"}</h1>
           <div className="box-details">
             <div className="top-details">
@@ -280,7 +282,7 @@ const AnimeDetails = () => {
               <div className="character" key={index}>
                 <img src={el.entry.images.jpg.image_url} alt={el.entry.title} loading="lazy" />
                 <div className="character-details">
-                  <Link to={`manga/${el.entry.mal_id}`} target="_blank">
+                  <Link to={`/manga/${el.entry.mal_id}`}>
                     <span>
                       <strong>name : </strong>
                       {el.entry.title}
@@ -297,6 +299,7 @@ const AnimeDetails = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

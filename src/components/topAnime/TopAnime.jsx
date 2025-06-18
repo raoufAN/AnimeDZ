@@ -17,12 +17,13 @@ const TopAnime = () => {
       setNumberOfItems(4);
     } else if (WindowSeize > 650) {
       setNumberOfItems(3);
-    } else if (WindowSeize > 460) {
+    } else if (WindowSeize > 400) {
       setNumberOfItems(2);
     } else {
       setNumberOfItems(1);
     }
   }, [WindowSeize]);
+
   return (
     <div className="top-anime">
       <div className="container">
